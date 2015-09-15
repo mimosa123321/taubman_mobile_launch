@@ -4,6 +4,17 @@ var MainView = require('./main-view/MainView');
 var PanelModule = require('./main-view/panel-module/PanelModule');
 
 
+window.slidingUp = function() {
+    console.log("slide");
+    if(!self.model.isOpenMenuPanel) {
+        if( self.model.currentSection < 5) {
+            self.model.currentSection += 1;
+            self.model.eventProxy.emit('onChangeSection');
+            self.model.prevSection = self.model.currentSection;
+        }
+    }
+};
+
 var ViewsManager = module.exports = React.createClass({
     getInitialState: function() {
         return {contents: [],
@@ -46,8 +57,9 @@ var ViewsManager = module.exports = React.createClass({
     initSwipe:function() {
         var count = 0;
         var self = this;
-        $('.mainView').swipe({
+        $('body').swipe({
             swipeUp: function(event, direction, distance, duration, fingerCount) {
+                console.log("slide");
                 if(!self.model.isOpenMenuPanel) {
                     if( self.model.currentSection < 5) {
                         self.model.currentSection += 1;
@@ -70,6 +82,22 @@ var ViewsManager = module.exports = React.createClass({
         });
     },
 
+    disableSwipe:function() {
+        var self = this;
+        $('.mainView').unbind('swipe');
+    },
+
+    /*slidingUp:function() {
+        console.log("slide");
+        if(!self.model.isOpenMenuPanel) {
+            if( self.model.currentSection < 5) {
+                self.model.currentSection += 1;
+                self.model.eventProxy.emit('onChangeSection');
+                self.model.prevSection = self.model.currentSection;
+            }
+        }
+    },*/
+
     onClosePanelHandler:function() {
         var self = this;
         var mainView = React.findDOMNode(this.refs.mainView);
@@ -80,6 +108,7 @@ var ViewsManager = module.exports = React.createClass({
         //allow drag after close panel
         $(mainView).css('overflow','none');
         $(window).scrollTop(0);
+        $('body').swipe("enable");
     },
 
     onShowSubContent:function(subContents) {
@@ -89,6 +118,8 @@ var ViewsManager = module.exports = React.createClass({
         //avoid drag after open panel
         //this.model.saveScrollTop = $(window).scrollTop();
         $(mainView).css('overflow','hidden');
+
+        $('body').swipe("disable");
 
         //overflow: hidden;
 
