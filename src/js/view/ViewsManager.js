@@ -46,7 +46,7 @@ var ViewsManager = module.exports = React.createClass({
     initSwipe:function() {
         var count = 0;
         var self = this;
-        $('body').swipe({
+        $('.mainView').swipe({
             swipeUp: function(event, direction, distance, duration, fingerCount) {
                 if(!self.model.isOpenMenuPanel) {
                     if( self.model.currentSection < 5) {
@@ -79,7 +79,7 @@ var ViewsManager = module.exports = React.createClass({
         this.model.eventProxy.emit('reset');
         //allow drag after close panel
         $(mainView).css('overflow','none');
-        //$(window).scrollTop(self.model.saveScrollTop);
+        $(window).scrollTop(0);
     },
 
     onShowSubContent:function(subContents) {
