@@ -56,7 +56,7 @@ var PanelSlideShow = module.exports = React.createClass({
             return (contents.type === "video"?
                 <li key={index}>
                     <div className="slideShowVideoContainer">
-                        <video className="slideShowVideo" id={slideShowVideoId} ref="slideShowVideo" poster={contents.cover} src={contents.url} width="auto" height="100%" controls autoPlay></video>;
+                        <video className="slideShowVideo" id={slideShowVideoId} ref="slideShowVideo" poster={contents.cover} src={contents.url} width="auto" height="100%"></video>;
                     </div>
 
                 </li>:
