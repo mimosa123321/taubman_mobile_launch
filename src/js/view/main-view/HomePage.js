@@ -11,18 +11,6 @@ var HomePage = module.exports = React.createClass({
         $(homePage).css('height',height);
     },
 
-    clickDownloadPaper: function() {
-        $('.emailForm').removeClass('hide').addClass('show');
-    },
-
-    checkForm:function() {
-        this.closeForm();
-    },
-
-    closeForm:function() {
-        $('.emailForm').removeClass('show').addClass('hide');
-    },
-
     fbShareHandler: function() {
         fbShare();
     },

@@ -104,6 +104,8 @@ Main.prototype.updateHeaderBar = function(section) {
 
 
 
+
+
 /*Main.prototype.getData = function(url) {
     return new Promise(function(resolve, reject){
         var req = new XMLHttpRequest();

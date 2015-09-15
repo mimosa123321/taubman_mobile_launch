@@ -76,10 +76,8 @@ var Application = module.exports = {
     }
 };
 
-$(function() {
 
 
-});
 
 window.addEventListener('load',function() {
     Application.init();

@@ -38,6 +38,7 @@
     </script>
     <script>
         var isIE8 = false;
+        var isWrongInput = false;
         checkVersion();
         function checkVersion() {
             var msg = "You're not using Windows Internet Explorer.";
@@ -81,6 +82,68 @@
             window.open('http://service.weibo.com/share/share.php?url=http%3A%2F%2Ftaubman.xenyo.net%2F&title=Share this report with your friends and followings : http://taubman.xenyo.net&pic=http%3A%2F%2Ftaubman.xenyo.net%2Fimages%2Fbg.jpg&language=zh_cn','WeiboShare');
         }
 
+
+
+        function clickDownloadPaper() {
+            $('.emailForm').removeClass('hide').addClass('show');
+        }
+
+
+        function showForm() {
+            $('#myEmailForm').css('visibility','visible');
+            $('#myEmailForm').css('opacity',1);
+        }
+
+        function checkForm() {
+            var self = this;
+            var form1 = $('.form1');
+            var form2 = $('.form2');
+            var form = document.getElementById('myEmailForm');
+
+            var email = $(".myInput").val();
+            console.log(email);
+
+            if (isEmail(email)) {
+                console.log("summit");
+                $(form1).css('display','none');
+                $(form2).css('display','block');
+
+                form.submit();
+                setTimeout ( function() {
+                    closeForm();
+                }, 3000);
+            } else {
+                isWrongInput = true;
+                $('.myInput').val('Please enter a valid email');
+            }
+        }
+
+
+        function checkIfWrongInput() {
+            //console.log("here");
+            if( this.isWrongInput) {
+                $('.myInput').val('');
+                this.isWrongInput = false;
+            }
+        }
+
+        function submitForm() {
+            $.post("http://chinamall.xenyo.net:8080/download_whitepaper.aspx", function(result) {
+
+            }.bind(this));
+        }
+
+        function isEmail(email) {
+            var regex = /^([0-9a-zA-Z]([-\.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/;
+            return regex.test(email);
+        }
+
+        function closeForm() {
+//            $('.emailForm').removeClass('show').addClass('hide');
+            $('#myEmailForm').css('visibility','hidden');
+            $('#myEmailForm').css('opacity',0);
+        }
+
     </script>
 </head>
 <body>
@@ -117,11 +180,11 @@
         </tr>
         <tr>
             <td class="left"><a href="#" class="icon5 menuButton">NEXT-GENERATION MALL DESIGN</a></td>
-            <td><a href="#" class="icon6">DOWNLOAD WHITEPAPER</a></td>
+            <td><a href="#" class="icon6" onclick="showForm()">DOWNLOAD WHITEPAPER</a></td>
         </tr>
         <tr>
-            <td class="left"><a href="#" class="icon7">VIEW PREZI</a></td>
-            <td><a href="#" class="icon8">ABOUT TAUBMAN ASIA</a></td>
+            <td class="left"><a href="http://prezi.com/jwkprjaodn0i/?utm_campaign=share&utm_medium=copy" target="_blank" class="icon7">VIEW PREZI</a></td>
+            <td><a href="http://www.taubmanasia.com/" target="_blank" class="icon8">ABOUT TAUBMAN ASIA</a></td>
         </tr>
         <tr>
             <td colspan="2" class="share">
@@ -129,11 +192,31 @@
                 <a href="#" class="bottom lin" onClick=linkedInShareHandler()><img src="build/images/menu/icon_lin.png"></a>
                 <a href="#" class="bottom tw" onClick=twitterShareHandler()><img src="build/images/menu/icon_tw.png"></a>
                 <a href="#" class="bottom wb" onClick=weiboShareHandler()><img src="build/images/menu/icon_wb.png"></a>
-                <a href="#" class="bottom ch"><img src="build/images/menu/icon_ch.png"></a>
+                <a href="/zh/index.html" class="bottom ch"><img src="build/images/menu/icon_ch.png"></a>
                 <a href="#" class="bottom en"><img src="build/images/menu/icon_en.png"></a>
             </td>
         </tr>
     </table>
+
+    <form class="emailForm" id="myEmailForm" method="POST" action="http://chinamall.xenyo.net:8080/download_whitepaper.aspx">
+        <div class = "emailFormBg"></div>
+        <div class = "closeButton" onclick=closeForm()><img src="build/images/closebtn.png" /></div>
+        <div class = "contents">
+            <div class = "form2" ref="form2"><img src="./build/images/thankyou.png"/></div>
+            <div class = "form1" ref="form1">
+                <p>Taubman Asia thanks you for your interest in <br> downloading the China Mall 2020 whitepaper.</p>
+                <p>Please enter your details below.</p>
+                <div class="formButtonBg">
+                    <img src="build/images/formbtn.png"/>
+                    <input type="text" id="email" name="email" class = "myInput" placeholder="Email here" onclick=checkIfWrongInput()>
+                </div>
+                <div class="submitBtn" onclick=checkForm()>
+                    <img src="build/images/formsubmit.png" />
+                </div>
+            </div>
+
+        </div>
+    </form>
 
 </div>
 <!--<div id="updateBrowser"><div class="content">Your browser version is unsupported. Please download a newer browser such as <a href="http://www.google.com/chrome">Chrome</a> or <a href="http://www.microsoft.com/internetexplorer">Internet Explorer</a>.</div></div>-->

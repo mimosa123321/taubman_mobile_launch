@@ -46,7 +46,7 @@ var ViewsManager = module.exports = React.createClass({
     initSwipe:function() {
         var count = 0;
         var self = this;
-        $(".mainView").swipe({
+        $('body').swipe({
             swipeUp: function(event, direction, distance, duration, fingerCount) {
                 if(!self.model.isOpenMenuPanel) {
                     if( self.model.currentSection < 5) {
@@ -89,6 +89,8 @@ var ViewsManager = module.exports = React.createClass({
         //avoid drag after open panel
         //this.model.saveScrollTop = $(window).scrollTop();
         $(mainView).css('overflow','hidden');
+
+        //overflow: hidden;
 
         //this.props.model.eventProxy.emit("onUpdateHeaderbar",(subContents.subContent.pageId + 1));
     },
