@@ -1,0 +1,111 @@
+@mixin transform($transform...) {
+  -webkit-transform: $transform;
+  transform: $transform;
+}
+
+.panelSlideShowThumb {
+  position: relative;
+  width: 90%;
+  margin: 5% auto 2%;
+
+  .bx-wrapper {
+    height:auto !important;
+  }
+
+  ul {
+    padding:0;
+    li {
+      margin-right: 20px;
+      width:272px;
+      height:auto;
+      cursor: pointer;
+    }
+  }
+
+  .bx-wrapper {
+    width: 80%;
+  }
+
+  .bx-viewport {
+    //width: 100%!important;
+    margin: 0 auto !important;
+    height:120px;
+    z-index:2;
+  }
+
+  .bx-controls {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    height: auto;
+    z-index:1;
+
+    a {
+      width: 42px;
+      height: 41px;
+      bottom: 0 !important;
+    }
+
+    .bx-prev {
+      position: absolute;
+      left: -14%;
+      top: 45%;
+      @include transform(translateY(-50%));
+      background: url(../images/leftarrow.png) no-repeat;
+      background-size: cover;
+
+    }
+
+    .bx-prev:hover {
+      background-position: 0px -40px;
+    }
+
+    .bx-next {
+      position: absolute;
+      top: 45%;
+      right: -14%;
+      @include transform(translateY(-50%));
+      background-position: 0px 0;
+      background: url(../images/rightarrow.png) no-repeat;
+      background-size: cover;
+    }
+
+    .bx-next:hover {
+      background-position: 0px -40px;
+    }
+
+  }
+}
+
+
+@media only screen
+and (min-width : 1700px) {
+  .bx-prev {
+    position: absolute;
+    width: 62px !important;
+    height: 61px !important;
+    background: url(../images/leftarrow.png) no-repeat;
+    background-position: 0px 0px;
+    background-size: 100% auto !important;
+    margin-top: -31px !important;
+
+    &:hover {
+      background-size: 100% auto !important;
+      background-position: 0 -59px !important;
+    }
+  }
+
+  .bx-next {
+    width: 62px !important;
+    height: 61px !important;
+    background: url(../images/rightarrow.png) no-repeat;
+    background-position: 0px 0px;
+    background-size: 100% auto !important;
+    margin-top: -31px !important;
+
+    &:hover {
+      background-size: 100% auto !important;
+      background-position: 0 -59px !important;
+    }
+  }
+}

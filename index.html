@@ -1,0 +1,142 @@
+<?<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+    <meta property="og:title" content="Share this report with your friends and followings : http://taubman.xenyo.net" />
+    <meta property="og:description" content="Share this report with your friends and followers" />
+    <meta property="og:url" content="http://taubman.xenyo.net/" />
+    <meta property="og:site_name" content="Taubman Asia China Mall 2020"/>
+    <meta property="og:image" content="http://taubman.xenyo.net/build/images/bg.jpg" />
+    <meta property="og:type" content="article" />
+    <title>Taubman</title>
+    <link href="build/css/style.min.css" rel="stylesheet">
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="build/css/ie8.min.css">
+    <![endif]-->
+    <!--[if IE 9]>
+    <link rel="stylesheet" type="text/css" href="build/css/ie9.min.css">
+    <![endif]-->
+    <script src="lib/modernizr.custom.77939.js"></script>
+    <script src="build/js/main.min.js"></script>
+    <script>
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId      : '1650930968518989',
+                xfbml      : true,
+                version    : 'v2.4'
+            });
+        };
+
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <script>
+        var isIE8 = false;
+        checkVersion();
+        function checkVersion() {
+            var msg = "You're not using Windows Internet Explorer.";
+            var ver = getInternetExplorerVersion();
+            if (ver > -1) {
+                if (ver === 8.0) {
+                    isIE8 = true;
+                }
+            }
+        }
+
+        function getInternetExplorerVersion() {
+            var rv = -1; // Return value assumes failure.
+            if (navigator.appName == 'Microsoft Internet Explorer') {
+                var ua = navigator.userAgent;
+                var re = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+                if (re.exec(ua) != null)
+                    rv = parseFloat(RegExp.$1);
+            }
+            return rv;
+        }
+
+        function fbShare() {
+            FB.ui({
+                method: 'share',
+                href: 'http://taubman.xenyo.net/index.html'
+            }, function(response){
+
+            });
+        }
+
+        function linkedInShareHandler() {
+            window.open('https://www.linkedin.com/cws/share?url=http%3A%2F%2Ftaubman.xenyo.net%2F','LinkedInShare');
+        }
+
+        function twitterShareHandler() {
+            window.open('http://www.twitter.com/share?url=http%3A%2F%2Ftaubman.xenyo.net%2F','TwitterShare');
+        }
+
+        function weiboShareHandler() {
+            window.open('http://service.weibo.com/share/share.php?url=http%3A%2F%2Ftaubman.xenyo.net%2F&title=Share this report with your friends and followings : http://taubman.xenyo.net&pic=http%3A%2F%2Ftaubman.xenyo.net%2Fimages%2Fbg.jpg&language=zh_cn','WeiboShare');
+        }
+
+    </script>
+</head>
+<body>
+<div id="wrapper">
+    <div id="topBar">
+        <div id="logo">
+            <div id="logoImg">
+                <span class="center"></span>
+                <img src="build/images/logo.jpg">
+            </div>
+        </div>
+        <div id="menuIcon">
+           <!--<img src="build/images/menuicon.png">-->
+        </div>
+
+    </div>
+    <div id="middleBar">
+        <div id="pagesApp"></div>
+    </div>
+    <div id="bottomBar">
+        <div id="footer">
+            <span id="copyright">© 2015 THE TAUBMAN COMPANY LLC ALL RIGHTS RESERVED</span>
+        </div>
+    </div>
+
+    <table class="menu">
+        <tr>
+            <td class="left"><a href="#" class="icon1 menuButton">CHINA RETAIL BY THE NUMBERS</a></td>
+            <td><a href="#" class="icon2 menuButton">BRAND BONDING</a></td>
+        </tr>
+        <tr>
+            <td class="left"><a href="#" class="icon3 menuButton">DIGITALLY-ENABLED STRATEGIES</a></td>
+            <td><a href="#" class="icon4 menuButton">MOBILE REALITY</a></td>
+        </tr>
+        <tr>
+            <td class="left"><a href="#" class="icon5 menuButton">NEXT-GENERATION MALL DESIGN</a></td>
+            <td><a href="#" class="icon6">DOWNLOAD WHITEPAPER</a></td>
+        </tr>
+        <tr>
+            <td class="left"><a href="#" class="icon7">VIEW PREZI</a></td>
+            <td><a href="#" class="icon8">ABOUT TAUBMAN ASIA</a></td>
+        </tr>
+        <tr>
+            <td colspan="2" class="share">
+                <a href="#" class="bottom fb" onClick=fbShare()><img src="build/images/menu/icon_fb.png"></a>
+                <a href="#" class="bottom lin" onClick=linkedInShareHandler()><img src="build/images/menu/icon_lin.png"></a>
+                <a href="#" class="bottom tw" onClick=twitterShareHandler()><img src="build/images/menu/icon_tw.png"></a>
+                <a href="#" class="bottom wb" onClick=weiboShareHandler()><img src="build/images/menu/icon_wb.png"></a>
+                <a href="#" class="bottom ch"><img src="build/images/menu/icon_ch.png"></a>
+                <a href="#" class="bottom en"><img src="build/images/menu/icon_en.png"></a>
+            </td>
+        </tr>
+    </table>
+
+</div>
+<!--<div id="updateBrowser"><div class="content">Your browser version is unsupported. Please download a newer browser such as <a href="http://www.google.com/chrome">Chrome</a> or <a href="http://www.microsoft.com/internetexplorer">Internet Explorer</a>.</div></div>-->
+<!--[if lt IE 8]><script>document.getElementById('updateBrowser').style.display = 'block';</script><![endif]-->
+</body>
+</html>

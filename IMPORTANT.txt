@@ -1,0 +1,9 @@
+jQuery.fn.load = function( url, params, callback ) {
+	//make bxslider works
+	if(!url) {
+		return;
+	}
+
+
+	....
+}
